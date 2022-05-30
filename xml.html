@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    
+    <p id="example"></p>
+    <script>
+        var XML_Parser, XML_Document;
+
+        var Cheese = "<cheese>" +
+            "<variety>Parmesan</variety>" +
+            "<texture>hard</texture>" +
+            "<flavor>nutty</flavor>" +
+            "<flavor>tangy</flavor>" +
+            "<ageingYrs>1</ageingYrs>" +
+            "</cheese>";
+        
+        XML_Parser = new DOMParser(); // creates new xml dom parser
+
+        XML_Document = XML_Parser.parseFromString(Cheese,"text/xml"); // creates new xml dom object from 'cheese' text string
+
+        document.getElementById("example").innerHTML = 
+        XML_Document.getElementsByTagName("flavor")[1].childNodes[0].nodeValue;
+    </script>
 </body>
 </html>
